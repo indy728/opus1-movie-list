@@ -10,7 +10,7 @@ Primary queries and base styling complete.
 
 ## TO-DOs:
 
-~~Icons in header section~~ 4/20/19
+~~Icons in header section~~ 4/20/19  
 ~~Showcase tile details display~~ 4/20/19
 * Multiple rows of showcase films
 * Slideshow of featured films
