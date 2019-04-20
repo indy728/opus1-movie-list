@@ -42,9 +42,7 @@ class App extends Component {
         <Header />
         <Featured imdbId={FEATURE_FILMS[0].imdbId} />
         <Menu />
-        <section className="showcase">
-          <Showcase />
-        </section>
+        <Showcase />
         <FooterNav />
       </div>
     );

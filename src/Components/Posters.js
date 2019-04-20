@@ -20,34 +20,29 @@ class PosterComponent extends Component {
     const movie = {...this.props.data.movie}
     movie.id = this.props.imdbId;
 
-    const cardStyle = {
-        minWidth: "20rem",
-        border: "solid 1px #eee",
-        boxShadow: "0 0 10px -2px #999999"
-    }
-
     const imgStyle = {
-        height: "60rem"
+        height: "60rem",
+        maxWidth: "100%"
     }
 
     return (
-      <div className="showcase"  key={movie.id} style={cardStyle}>
-        <div className="showcase-poster">
+      <div className="poster"  key={movie.id}>
+        <div className="poster-image">
           <img style={imgStyle}
             src={movie.poster}
             alt={movie.title} />
         </div>
-        <div className="showcase-details">
-          <div className="showcase-details__item">
-            <Sprite classId="showcase-details__item-icon" icon="eye" />
+        <div className="poster-details">
+          <div className="poster-details__item">
+            <Sprite classId="poster-details__item-icon" icon="eye" />
             <h3>456</h3>
           </div>
-          <div className="showcase-details__item">
-            <Sprite classId="showcase-details__item-icon" icon="thumbs-up" />
+          <div className="poster-details__item">
+            <Sprite classId="poster-details__item-icon" icon="thumbs-up" />
             <h3>10k</h3>
           </div>
-          <div className="showcase-details__item">
-            <Sprite classId="showcase-details__item-icon" icon="chatboxes" />
+          <div className="poster-details__item">
+            <Sprite classId="poster-details__item-icon" icon="chatboxes" />
             <h3>45</h3>
           </div>
         </div>
@@ -59,7 +54,7 @@ class PosterComponent extends Component {
     if (this.props.loading) { return <div>Loading...</div>}
     if (this.props.error) {return <div>Error</div>}
     return (
-      <div className="col-1-of-2">
+      <div className="col-1-of-2" key={this.props.imdbId}>
         {this.renderPoster()}
       </div>
     )

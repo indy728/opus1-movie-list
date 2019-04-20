@@ -22,6 +22,8 @@ const Menu = () => {
     alignItems: "center",
     justifyContent: 'space-around',
     height: "10rem",
+    boxShadow: "0 1rem 1rem -1rem #999999",
+    zIndex: "10000"
   }
 
   return (
