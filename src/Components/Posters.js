@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
+import Sprite from './Sprite';
+
 export const query = gql`
   query GetOutNowPosters($imdbId: String)
   {
@@ -24,23 +26,32 @@ class PosterComponent extends Component {
         boxShadow: "0 0 10px -2px #999999"
     }
 
-    const posterStyle = {
-    }
-
     const imgStyle = {
         height: "60rem"
     }
 
     return (
       <div className="showcase"  key={movie.id} style={cardStyle}>
-        <div className="showcase-poster" style={posterStyle}>
+        <div className="showcase-poster">
           <img style={imgStyle}
             src={movie.poster}
             alt={movie.title} />
         </div>
+        <div className="showcase-details">
+          <div className="showcase-details__item">
+            <Sprite classId="showcase-details__item-icon" icon="eye" />
+            <h3>456</h3>
+          </div>
+          <div className="showcase-details__item">
+            <Sprite classId="showcase-details__item-icon" icon="thumbs-up" />
+            <h3>10k</h3>
+          </div>
+          <div className="showcase-details__item">
+            <Sprite classId="showcase-details__item-icon" icon="chatboxes" />
+            <h3>45</h3>
+          </div>
+        </div>
       </div>
-      // <div className="showcase-details">
-      // </div>
     )
   }
 

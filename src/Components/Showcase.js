@@ -3,21 +3,21 @@ import Poster from './Posters';
 
 class Showcase extends Component {
 
-  renderPoster() {
-    const movie = {...this.props.data.movie}
-    movie.id = this.props.imdbId;
-    return (
-      <div className="tile"  key={movie.id}>
-        <div className="tile-poster">
-          <img 
-            src={movie.poster}
-            alt={movie.title} />
-        </div>
-      </div>
-      // <div className="tile-details">
-      // </div>
-    )
-  }
+  // renderPoster() {
+  //   const movie = {...this.props.data.movie}
+  //   movie.id = this.props.imdbId;
+  //   return (
+  //     <div className="tile"  key={movie.id}>
+  //       <div className="tile-poster">
+  //         <img 
+  //           src={movie.poster}
+  //           alt={movie.title} />
+  //       </div>
+  //     </div>
+  //     // <div className="tile-details">
+  //     // </div>
+  //   )
+  // }
 
   render() {
 
