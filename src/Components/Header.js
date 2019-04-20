@@ -2,13 +2,13 @@ import React from 'react';
 
 const Header = () => {
 
-    const style = {
-        width: "100%",
-        height: "12rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-    }
+    // const style = {
+    //     width: "100%",
+    //     height: "12rem",
+    //     display: "flex",
+    //     alignItems: "center",
+    //     justifyContent: "center"
+    // }
 
     const textStyle = {
         fontSize: "5rem",
@@ -18,11 +18,32 @@ const Header = () => {
         display: "inline-block",
     }
 
+    const icons = [
+        [
+            { name: "albums", link: "albums"},
+            { name: "barcode", link: "barcode"},
+        ],
+        { name: "login", link: "log-in"},
+    ]
+
     return (
-        <section className="header" style={style}>
-        <div>
-            <h1 className="header-text" style={textStyle}>movies</h1>
-        </div>
+        <section className="header">
+            <div className="header-icon">
+                <div className="header-icon__left">
+                    <ion-icon name={icons[0][0].link} />
+                </div>
+                <div className="header-icon__left">
+                    <ion-icon name={icons[0][1].link} />
+                </div>
+            </div>
+            <div className="header-text" >
+                <h1 style={textStyle}>movies</h1>
+            </div>
+            <div className="header-icon">
+                <div className="header-icon__right">
+                    <ion-icon name={icons[1].link} />
+                </div>
+            </div>
         </section>
     )
 }

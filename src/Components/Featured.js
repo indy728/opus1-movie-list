@@ -29,11 +29,11 @@ class Featured extends Component {
     }
 
     return (
-        <div className="featured-poster" key={movie.id} style={style}>
-          &nbsp;
-        </div>
-      )
-    }
+      <div className="featured-poster" key={movie.id} style={style}>
+        &nbsp;
+      </div>
+    )
+  }
 
   render() {
     const style = {
