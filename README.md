@@ -1,3 +1,7 @@
+`touch .env && echo "OMDB_API_KEY=" >> .env`
+
+Run the above line in terminal in the root of this app's repository and paste your personal OMDB API key after the equals to begin.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Use 'npm start' to create GraphQL server and launch the app on port 4000.
