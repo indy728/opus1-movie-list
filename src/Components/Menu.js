@@ -4,7 +4,8 @@ const Option = (props) => {
   
   const style = {
     width: "30rem",
-    fontSize: "3rem"
+    fontSize: "2.5rem",
+    textTransform: "uppercase"
   }
   
   return (
@@ -16,6 +17,7 @@ const Option = (props) => {
 
 const Menu = () => {
   const style = {
+    marginTop: "2rem",
     display: 'flex',
     alignItems: "center",
     justifyContent: 'space-around',
