@@ -11,7 +11,7 @@ Primary queries and base styling complete.
 ## TO-DOs:
 
 ~~Icons in header section~~ 4/20/19  
-~~Showcase tile details display~~ 4/20/19
+~~Showcase tile details display~~ 4/20/19  
 ~~Multiple rows of showcase films~~ 4/20/19
 * Slideshow of featured films
 * Clean up styling
