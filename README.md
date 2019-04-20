@@ -4,7 +4,9 @@ Run the above line in terminal in the root of this app's repository and paste yo
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Use 'npm start' to create GraphQL server and launch the app on port 4000.
+Use 'npm start' to create GraphQL server and launch the app.
+
+Navigate to the directed local address in browser as specified in terminal to view the app.
 
 Primary queries and base styling complete.
 
