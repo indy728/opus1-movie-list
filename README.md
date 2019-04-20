@@ -14,8 +14,10 @@ Primary queries and base styling complete.
 * Showcase tile details display
 * Multiple rows of showcase films
 * Slideshow of featured films
+* Clean up styling
 * Create 'active tab' functionality for "Out Now" and "Coming Soon" sections
 * Search functionality
 * Greater list of showcase films with more autonomy of selection
+* Finalize Styling
 * Infinite scrolling and dynamic data loading
 * Responsive design
