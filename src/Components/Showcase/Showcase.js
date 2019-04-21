@@ -3,23 +3,26 @@ import Poster from './Posters';
 
 const Row = (props) => {
   
-  const posterList = props.movieArray.map((movie) => {
-    return <Poster imdbId={movie.imdbId} />
-  })
+  const posterList = props.movieArray.map((movie) => <Poster imdbId={movie.imdbId} key={movie.imdbId}/>)
 
   return (
-    <div className="showcase-row" key={props.key}>
+    <div className="showcase-row">
       {posterList}
     </div>
-      
   )
 }
 
 class Showcase extends Component {
 
+  renderRows(movieArray) {
+    return (
+      movieArray.map((subArray, index) => <Row movieArray={subArray} key={index} />)
+    )
+  }
+
   render() {
 
-    const OUT_NOW = [
+    const outNowMovies = [
       [
         {
           "title": "Shazam!",
@@ -42,21 +45,16 @@ class Showcase extends Component {
       ]
     ]
 
-    const rows = OUT_NOW.map((movieArray, index) => {
-      return <Row movieArray={movieArray} id={index} />
-    })
-    
     if (this.props.loading) { return <div>Loading...</div> }
     if (this.props.error) { return <div>Error</div> }
     return (
       <section className="showcase">
         <div className="showcase-fixed_height">
-          {rows}
+          {this.renderRows(outNowMovies)}
         </div>
       </section>
     )
   }
 };
-
 
 export default Showcase;

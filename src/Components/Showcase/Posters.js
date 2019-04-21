@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import Sprite from '../Sprite';
 
-import Sprite from './Sprite';
-
-export const query = gql`
-  query GetOutNowPosters($imdbId: String)
+const query = gql`
+  query GetPosters($imdbId: String)
   {
     movie(id: $imdbId) {
         title
@@ -13,6 +12,10 @@ export const query = gql`
       }
   }
 `;
+
+const postersQueryOptions = {
+  options: ({imdbId}) => ({ variables: { imdbId } }),
+}
 
 class PosterComponent extends Component {
 
@@ -54,13 +57,11 @@ class PosterComponent extends Component {
     if (this.props.loading) { return <div>Loading...</div>}
     if (this.props.error) {return <div>Error</div>}
     return (
-      <div className="col-1-of-2" key={this.props.imdbId}>
+      <div className="col-1-of-2">
         {this.renderPoster()}
       </div>
     )
   }
 }
 
-export default graphql(query, {
-    options: ({imdbId}) => ({ variables: { imdbId } }),
-  })(PosterComponent);
+export default graphql(query, postersQueryOptions)(PosterComponent);

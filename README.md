@@ -1,8 +1,7 @@
+Run the code below in terminal in the root of this app's repository and paste your personal OMDB API key after the equals to begin.
 `touch .env && echo "OMDB_API_KEY=" >> .env`
 
-Run the above line in terminal in the root of this app's repository and paste your personal OMDB API key after the equals to begin.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Run 'npm install' to download required dependencies.
 
 Use 'npm start' to create GraphQL server and launch the app.
 
@@ -15,7 +14,7 @@ Primary queries and base styling complete.
 ~~Icons in header section~~ 4/20/19  
 ~~Showcase tile details display~~ 4/20/19  
 ~~Multiple rows of showcase films~~ 4/20/19
-* Slideshow of featured films
+~~Slideshow of featured films~~ 4/21/19
 * Clean up styling
 * Create 'active tab' functionality for "Out Now" and "Coming Soon" sections
 * Search functionality
@@ -23,3 +22,5 @@ Primary queries and base styling complete.
 * Finalize Styling
 * Infinite scrolling and dynamic data loading
 * Responsive design
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
