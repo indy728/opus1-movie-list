@@ -8,9 +8,18 @@ const Featured = () => {
     height: "60rem"
   }
 
+  const featuredMovies = [
+    {title: "The Big Lebowski"},
+    {title: "The Matrix"},
+    {title: "Cloud Atlas"},
+    {title: "Princess Mononoke"},
+    {title: "Snatch"},
+    {title: "This Is Spinal Tap"},
+  ]
+
   return (
     <section className="featured" style={style}>
-      <FeaturePoster />
+      <FeaturePoster movies={featuredMovies}/>
     </section>
   )
 }

@@ -92,8 +92,11 @@ body {
 }
 
 .slide {
-  /* height: 100%; */
   width: 100%;
+}
+
+.slide-wrapper {
+  height: 100%;
 }
 
 .arrow {

@@ -23,6 +23,8 @@ const Showcase = () => {
     "They Shall Not Grow Old",
     "Mr. Holland's Opus",
     "The Sound of Music",
+    "Undefined",
+    "Ratatouille"
   ]
 
   const movieArrays = subArrays(outNowMovies);
