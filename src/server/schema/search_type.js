@@ -16,7 +16,7 @@ const SearchType = new GraphQLObjectType({
     movies: {
       type: GraphQLList(SearchResult),
       resolve: (result) => result.Search,
-    },
+    }
   },
 });
 

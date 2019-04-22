@@ -30,7 +30,7 @@ const SearchResult = new GraphQLObjectType({
     poster: {
       type: GraphQLString,
       resolve: (result) => result.Poster,
-    },
+    }
   },
 });
 

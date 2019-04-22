@@ -3,6 +3,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
+  GraphQLList,
 } = require("graphql");
 
 require('dotenv').config();
@@ -38,14 +39,24 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: (root, args) => fetchSearch(args.searchTerm),
     },
-    searchYear: {
+    searchMany: {
       type: SearchType,
       args: {
-        searchTerm: { type: GraphQLString,
-                      year: GraphQLInt},
-        // more...
+        input: { type: GraphQLList(GraphQLString) },  
       },
-      resolve: (root, args) => fetchSearch(args.searchTerm),
+      resolve: async (root, { input }) => {
+        console.log(input);
+        const promises = await input.map(async title => {
+          const response = await fetchSearch(title);
+            // console.log(response);
+            return response;
+          });
+  
+          console.log(promises);
+          const results = await Promise.all(promises)
+          // console.log(results);
+          return results;
+        }
     },
     movie: {
       type: MovieType,
