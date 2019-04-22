@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Row from './Row';
 
 const subArrays = (bigarray) => {
@@ -10,35 +10,30 @@ const subArrays = (bigarray) => {
   return arrayOfArrays;
 }
 
-class Showcase extends Component {
+const Showcase = () => {
 
-  renderRows(movieArray) {
-    console.log(movieArray)
+  const renderRows = (movieArray) =>{
     return (
       movieArray.map((subArray, index) => <Row movies={subArray} key={index} />)
     )
   }
 
-  render() {
-    const outNowMovies = [
-      "Shazam!",
-      "They Shall Not Grow Old",
-      "Mr. Holland's Opus",
-      "The Sound of Music",
-    ]
+  const outNowMovies = [
+    "Shazam!",
+    "They Shall Not Grow Old",
+    "Mr. Holland's Opus",
+    "The Sound of Music",
+  ]
 
-    const movieArrays = subArrays(outNowMovies);
+  const movieArrays = subArrays(outNowMovies);
 
-    if (this.props.loading) { return <div>Loading...</div> }
-    if (this.props.error) { return <div>Error</div> }
-    return (
-      <section className="showcase">
-        <div className="showcase-fixed_height">
-          {this.renderRows(movieArrays)}
-        </div>
-      </section>
-    )
-  }
+  return (
+    <section className="showcase">
+      <div className="showcase-fixed_height">
+        {renderRows(movieArrays)}
+      </div>
+    </section>
+  )
 };
 
 export default Showcase;

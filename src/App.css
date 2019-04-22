@@ -108,6 +108,10 @@ body {
   transition: transform ease-in .1s;
 }
 
+.arrow:hover {
+  background: rgb(58, 194, 228);
+}
+
 .backArrow {
   position: absolute;
   top: 50%;
@@ -115,6 +119,9 @@ body {
   transform: translateY(-120%);
   z-index: 999;
   color: #fff;
+}
+.backArrow:hover {
+  transform: translateY(-120%) scale(1.1);
 }
 
 .nextArrow {
@@ -126,6 +133,10 @@ body {
   color: #fff;
 }
 
+.nextArrow:hover {
+  transform: translateY(80%) scale(1.1);
+}
+
 .arrow-icon {
   font-size: 4rem;
   font-weight: 700;
@@ -134,6 +145,14 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* MENU COMPONENT STYLING */
+
+.menu {
+
+}
+
+.menu
 
 /* SHOWCASE COMPONENT STYLING */
 

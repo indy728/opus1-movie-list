@@ -9,6 +9,15 @@ import FooterNav from './Components/Footer/Footer_Nav' ;
 
 class App extends Component {
 
+  state = {
+    comingSoon: false
+  }
+
+  toggleMenuHandler = () => {
+    const doesShow = this.state.comingSoon;
+    this.setState({comingSoon: !doesShow});
+  };
+
   render() {
     
     return (

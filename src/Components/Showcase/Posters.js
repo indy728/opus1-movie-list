@@ -23,8 +23,8 @@ const PosterImage = (props) => {
   const movie = props.movie;
 
   const imgStyle = {
-      height: "60rem",
-      maxWidth: "100%"
+    height: "60rem",
+    maxWidth: "100%"
   }
   
   return (
@@ -55,7 +55,6 @@ const PosterImage = (props) => {
 class PosterComponent extends Component {
 
   renderPoster() {
-
     const movie = (this.props.data.search.movies[0]);
 
     return (

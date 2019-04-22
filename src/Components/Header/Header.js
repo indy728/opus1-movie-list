@@ -1,15 +1,6 @@
 import React from 'react';
 
 const Header = () => {
-
-    // const style = {
-    //     width: "100%",
-    //     height: "12rem",
-    //     display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center"
-    // }
-
     const textStyle = {
         fontSize: "5rem",
         textTransform: "uppercase",
