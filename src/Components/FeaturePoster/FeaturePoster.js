@@ -9,6 +9,7 @@ class FeaturePoster extends Component {
     super(props)
 
     this.state = {
+      featuredMovies: props.movies,
       currentIndex: 0,
       translateValue: 0
     }

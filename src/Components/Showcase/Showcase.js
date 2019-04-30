@@ -1,5 +1,13 @@
 import React from 'react';
 import Row from './Row';
+import styled from 'styled-components';
+
+const ShowcaseList = styled.section`
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 75rem;
+`;
 
 const subArrays = (bigarray) => {
   const size = 2;
@@ -30,11 +38,9 @@ const Showcase = () => {
   const movieArrays = subArrays(outNowMovies);
 
   return (
-    <section className="showcase">
-      <div className="showcase-fixed_height">
+    <ShowcaseList >
         {renderRows(movieArrays)}
-      </div>
-    </section>
+    </ShowcaseList>
   )
 };
 

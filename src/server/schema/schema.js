@@ -45,16 +45,15 @@ const RootQuery = new GraphQLObjectType({
         input: { type: GraphQLList(GraphQLString) },  
       },
       resolve: async (root, { input }) => {
-        console.log(input);
-        const promises = await input.map(async title => {
-          const response = await fetchSearch(title);
+        const promises = input.map(title => {
+          const response = fetchSearch(title);
             // console.log(response);
             return response;
           });
   
-          console.log(promises);
+          // console.log(promises);
           const results = await Promise.all(promises)
-          // console.log(results);
+          console.log(results);
           return results;
         }
     },
