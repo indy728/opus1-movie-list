@@ -1,5 +1,5 @@
 import React from 'react';
-import Sprite from '../Sprite';
+import Sprite from '../../atoms/Sprite';
 
 const Footer_Nav = () => {
    

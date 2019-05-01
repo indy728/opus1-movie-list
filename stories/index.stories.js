@@ -6,7 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
-import Header from '../src/Components/Header/Header';
+import Heading from '../src/components/atoms/Heading';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -20,7 +20,7 @@ storiesOf('Button', module)
     </Button>
   ));
 
-  storiesOf('Header', module).add('default', () => <Header></Header>)
-    .add('with label', () => (
-      <Heade
-    ))
+  storiesOf('Heading', module).add('default', () => <Heading>movies</Heading>)
+    .add('with larger font', () => (
+      <Heading fontSize="10rem">movies</Heading>
+    ));
