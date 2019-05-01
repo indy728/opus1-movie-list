@@ -8,6 +8,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   overflow: auto;
   height: 75rem;
+  z-index: -1;
 `;
 
 const subArrays = (bigarray) => {

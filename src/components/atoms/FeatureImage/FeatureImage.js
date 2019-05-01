@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import PosterImageWrapper from '../PosterImageWrapper';
+import FeatureImageWrapper from '../FeatureImageWrapper';
 
 const query = gql`
   query GetPosters($title: String)
@@ -21,13 +21,16 @@ const postersQueryOptions = {
   options: ({title}) => ({ variables: { title } }),
 }
 
-const ColumnWrapper = styled.div``;
+const ColumnWrapper = styled.div`
+    overflow: auto;
+    height: 100%;
+`;
 
-class PosterImage extends Component {
+class FeatureImage extends Component {
     renderPoster() {
         const movie = (this.props.data.search.movies[0]);
         return (
-            <PosterImageWrapper 
+            <FeatureImageWrapper 
                 src={movie.poster}
                 alt={movie.title}    
             />
@@ -45,4 +48,4 @@ class PosterImage extends Component {
     }
 }
 
-export default graphql(query, postersQueryOptions)(PosterImage);
+export default graphql(query, postersQueryOptions)(FeatureImage);

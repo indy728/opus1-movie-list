@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { palette } from 'styled-theme';
+
+import MarqueeDisplay from '../../molecules/MarqueeDisplay';
+import Heading from '../../atoms/Heading';
 
 const Wrapper = styled.section`
+    color: ${palette('text', 0)};
     margin-top: 2rem;
     display: flex;
     align-items: center;
@@ -13,7 +18,12 @@ const Wrapper = styled.section`
 const Marquee = () => {
     return (
         <Wrapper>
-
+            <MarqueeDisplay>
+                <Heading fontSize="3rem">out now</Heading>
+            </MarqueeDisplay>
+            <MarqueeDisplay>
+                <Heading fontSize="3rem">coming soon</Heading>
+            </MarqueeDisplay>
         </Wrapper>
     )
 }

@@ -23,7 +23,7 @@ const FeatureFilms = () => {
     return (
       <Wrapper>
           {/* <FeaturePoster movies={featuredMovies}/> */}
-        <Slideshow />
+        <Slideshow movies={featuredMovies}/>
       </Wrapper>
     )
   }

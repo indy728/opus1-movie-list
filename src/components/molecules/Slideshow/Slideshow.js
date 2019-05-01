@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 import Arrow from '../../atoms/Arrow'
+import FeatureImage from '../../atoms/FeatureImage'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -11,9 +12,17 @@ const Wrapper = styled.div`
     position: relative;
 `;
 
-const Slideshow = () => {
+const Slideshow = (props) => {
+
+    const posterList = props.movies.map((movie, index) => {
+        return (
+            <FeatureImage title={movie.title} key={movie + index} />
+        )
+    })
+
     return (
         <Wrapper>
+            {posterList}
             <Arrow name="arrow-round-up" back/>
             <Arrow name="arrow-round-down"/>
         </Wrapper>
