@@ -1,8 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import './App.css';
 
-import MoviePage from './pages/MoviePage/index.js';
+import MoviePage from './pages/MoviePage';
 
 import theme from './themes/default'
 

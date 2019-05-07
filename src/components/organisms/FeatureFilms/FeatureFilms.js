@@ -9,23 +9,14 @@ const Wrapper = styled.section`
     height: 60rem;
 `;
 
-const FeatureFilms = () => {
-  
-    const featuredMovies = [
-      {title: "The Big Lebowski"},
-      {title: "The Matrix"},
-      {title: "Cloud Atlas"},
-      {title: "Princess Mononoke"},
-      {title: "Snatch"},
-      {title: "This Is Spinal Tap"},
-    ]
-  
-    return (
-      <Wrapper>
-          {/* <FeaturePoster movies={featuredMovies}/> */}
-        <Slideshow movies={featuredMovies}/>
-      </Wrapper>
-    )
-  }
+const FeatureFilms = (props) => {
+
+  return (
+    <Wrapper>
+      <Slideshow style={props.style} handlers={props.handlers} movies={props.movies}/>
+    </Wrapper>
+  )
+
+}
   
   export default FeatureFilms

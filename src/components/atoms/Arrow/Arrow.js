@@ -32,9 +32,12 @@ const Wrapper = styled.div`
     }
 `;
 
-const Arrow = ({ name, ...props}) => {
+const Arrow = ({ handler, name, ...props}) => {
+
+    const slideHandler = handler;
+
     return (
-        <Wrapper {...props}>
+        <Wrapper onClick={slideHandler} {...props}>
             <ion-icon name={name}/>
         </Wrapper>
     )

@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { palette } from 'styled-theme';
 
 import HeaderIcons from '../../molecules/HeaderIcons/HeaderIcons';
-import Heading from '../../atoms/Heading';
-import HeaderIcon from '../../atoms/HeaderIcon';
+import Heading from '../../atoms/Heading/Heading';
+import HeaderIcon from '../../atoms/HeaderIcon/HeaderIcon';
 
 const Wrapper = styled.section`
     width: 100%;

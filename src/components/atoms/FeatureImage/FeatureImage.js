@@ -27,12 +27,13 @@ const ColumnWrapper = styled.div`
 `;
 
 class FeatureImage extends Component {
+
     renderPoster() {
         const movie = (this.props.data.search.movies[0]);
         return (
             <FeatureImageWrapper 
                 src={movie.poster}
-                alt={movie.title}    
+                alt={movie.title}
             />
         )
     }
@@ -41,7 +42,7 @@ class FeatureImage extends Component {
         if (this.props.data.loading) { return <div>Loading...</div>}
         if (this.props.data.error) {return <div>Error</div>}
         return (
-            <ColumnWrapper>
+            <ColumnWrapper style={this.props.style} >
                {this.renderPoster()}   
             </ColumnWrapper>
         )

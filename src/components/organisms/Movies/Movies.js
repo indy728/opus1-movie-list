@@ -32,49 +32,61 @@ class Movies extends Component {
         }
     }
 
-    // goToPrevSlide = () => {
-    //     if(this.state.currentIndex === 0)
-    //     return;
-        
-    //     this.setState(prevState => ({
-    //     currentIndex: prevState.currentIndex - 1,
-    //     translateValue: prevState.translateValue + this.slideHeight()
-    //     }))
-    // }
 
-    // goToNextSlide = () => {
-    //     if(this.state.currentIndex === this.state.featuredMovies.length - 1) {
-    //     return this.setState({
-    //         currentIndex: 0,
-    //         translateValue: 0
-    //     })
-    //     }
+    goToPrevSlide = () => {
+        if(this.state.featuredIndex === 0)
+            return;
         
-    //     this.setState(prevState => ({
-    //     currentIndex: prevState.currentIndex + 1,
-    //     translateValue: prevState.translateValue + -(this.slideHeight())
-    //     }));
-    // }
+        this.setState(prevState => ({
+            featuredIndex: prevState.featuredIndex - 1,
+            translateValue: prevState.translateValue + 600
+        }))
+    }
 
-    // slideHeight = () => {
-    //     return document.querySelector('.slide').clientHeight
-    // }
+    goToNextSlide = () => {
+        if(this.state.featuredIndex === this.state.featuredMovies.length - 1) {
+            return this.setState({
+                featuredIndex: 0,
+                translateValue: 0
+            })
+        }
+        
+        this.setState(prevState => ({
+            featuredIndex: prevState.featuredIndex + 1,
+            translateValue: prevState.translateValue + -600
+        }));
+    }
+
+    slideHeight = () => {
+        return document.querySelector('.slide').clientHeight
+    }
 
     // renderSlides = () => {
     //     return this.props.movies.map(movie => <Slide title={movie.title} key={movie.title} />);
     // }
 
-    // slideFunctions = [
-    //     this.goToPrevSlide,
-    //     this.goToNextSlide,
-    //     this.slideHeight,
-    //     this.renderSlides 
-    // ]
+    childHandlerTest = () => {
+        console.log(this.state.featuredIndex);
+        this.setState(prevState => ({
+            featuredIndex: prevState.featuredIndex + 1
+        }));
+    }
+
+    slideFunctions = [
+        this.goToPrevSlide,
+        this.goToNextSlide,
+        this.slideHeight
+    ]
 
     render() {
+        const style = {
+            transform: `translateY(${this.state.translateValue}px)`,
+            transition: 'transform ease-out 1s'
+        }
+
         return (
             <Wrapper>
-                <FeatureFilms />
+                <FeatureFilms style={style} handlers={this.slideFunctions} movies={this.state.featuredMovies} />
                 <Marquee />
                 <Posters />
                 <SearchBar />
