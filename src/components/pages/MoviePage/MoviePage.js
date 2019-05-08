@@ -30,10 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
 const MoviePage = () => {
   return (
-    <AppTemplate 
-    // header={<Header />}
-    // footer={<Footer />}
-    >
+    <AppTemplate >
       <GlobalStyle />
       <Header />
       <Movies />

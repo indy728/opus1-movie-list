@@ -24,14 +24,38 @@ class Movies extends Component {
             {title: "This Is Spinal Tap"},
         ]
 
+        const outNowMovies = [
+            {title: "Shazam!"},
+            {title: "They Shall Not Grow Old"},
+            {title: "Mr. Holland's Opus"},
+            {title: "The Sound of Music"},
+            {title: "Undefined"},
+            {title: "Ratatouille"},
+        ]
+
+        const comingSoonMovies = [
+            {title: "Solo"},
+            {title: "Detective Pikachu"},
+            {title: "The Room"},
+            {title: "Animatrix"},
+            {title: "March of the Penguins"},
+            {title: "Witches"},
+        ]
+
         this.state = {
             featuredMovies: featuredMovies,
             featuredIndex: 0,
             translateValue: 0,
-            comingSoon: false
+            comingSoon: false,
+            outNowMovies: outNowMovies,
+            comingSoonMovies: comingSoonMovies
         }
     }
 
+    toggleMarqueeHandler = () => {
+        const comingSoon = this.state.comingSoon;
+        this.setState({comingSoon: !comingSoon});
+    };
 
     goToPrevSlide = () => {
         if(this.state.featuredIndex === 0)
@@ -57,25 +81,14 @@ class Movies extends Component {
         }));
     }
 
-    slideHeight = () => {
-        return document.querySelector('.slide').clientHeight
-    }
-
-    // renderSlides = () => {
-    //     return this.props.movies.map(movie => <Slide title={movie.title} key={movie.title} />);
+    // slideHeight = () => {
+    //     return document.querySelector('.slide').clientHeight
     // }
-
-    childHandlerTest = () => {
-        console.log(this.state.featuredIndex);
-        this.setState(prevState => ({
-            featuredIndex: prevState.featuredIndex + 1
-        }));
-    }
 
     slideFunctions = [
         this.goToPrevSlide,
         this.goToNextSlide,
-        this.slideHeight
+        // this.slideHeight
     ]
 
     render() {
@@ -84,11 +97,13 @@ class Movies extends Component {
             transition: 'transform ease-out 1s'
         }
 
+        const moviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.outNowMovies;
+
         return (
             <Wrapper>
                 <FeatureFilms style={style} handlers={this.slideFunctions} movies={this.state.featuredMovies} />
-                <Marquee />
-                <Posters />
+                <Marquee handler={this.toggleMarqueeHandler} comingSoon={this.state.comingSoon} />
+                <Posters movies={moviePosters} />
                 <SearchBar />
             </Wrapper>
         )

@@ -15,30 +15,14 @@ const Wrapper = styled.div`
   } */
 `
 
-// const Header = styled.header`
-//   position: fixed;
-//   top: 0;
-//   width: 100%;
-//   z-index: 999;
-// `
-
-// const Features = styled.section``
-
 const Content = styled.section``
-
-// const Footer = styled.footer`
-//   margin-top: auto;
-// `
 
 const AppTemplate = ({
   header, features, children, footer, ...props
 }) => {
   return (
     <Wrapper {...props}>
-      {/* <Header>{header}</Header> */}
-      {/* {features && <Features>{features}</Features>} */}
       <Content>{children}</Content>
-      {/* <Footer>{footer}</Footer> */}
     </Wrapper>
   )
 }

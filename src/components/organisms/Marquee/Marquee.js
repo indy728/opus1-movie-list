@@ -15,13 +15,14 @@ const Wrapper = styled.section`
     box-shadow: 0 1rem 1rem -1rem #999999;
 `;
 
-const Marquee = () => {
+const Marquee = ({ handler, comingSoon }) => {
+
     return (
         <Wrapper>
-            <MarqueeDisplay>
+            <MarqueeDisplay handler={handler} comingSoon={!comingSoon}>
                 <Heading fontSize="3rem">out now</Heading>
             </MarqueeDisplay>
-            <MarqueeDisplay>
+            <MarqueeDisplay handler={handler} comingSoon={comingSoon}>
                 <Heading fontSize="3rem">coming soon</Heading>
             </MarqueeDisplay>
         </Wrapper>

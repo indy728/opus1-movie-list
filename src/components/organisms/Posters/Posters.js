@@ -13,14 +13,18 @@ const Wrapper = styled.section`
 
 const subArrays = (bigarray) => {
   const size = 2;
+  const objToArray = [];
+  for (let i=0; i<bigarray.length; i+=1) {
+    objToArray.push(bigarray[i].title);
+  }
   const arrayOfArrays = [];
-  for (let i=0; i<bigarray.length; i+=size) {
-      arrayOfArrays.push(bigarray.slice(i,i+size));
+  for (let i=0; i<objToArray.length; i+=size) {
+      arrayOfArrays.push(objToArray.slice(i,i+size));
   }
   return arrayOfArrays;
 }
 
-const Posters = () => {
+const Posters = ({ movies }) => {
 
   const renderRows = (movieArray) =>{
     return (
@@ -28,16 +32,16 @@ const Posters = () => {
     )
   }
 
-  const outNowMovies = [
-    "Shazam!",
-    "They Shall Not Grow Old",
-    "Mr. Holland's Opus",
-    "The Sound of Music",
-    "Undefined",
-    "Ratatouille"
-  ]
+  // const outNowMovies = [
+  //   "Shazam!",
+  //   "They Shall Not Grow Old",
+  //   "Mr. Holland's Opus",
+  //   "The Sound of Music",
+  //   "Undefined",
+  //   "Ratatouille"
+  // ]
 
-  const movieArrays = subArrays(outNowMovies);
+  const movieArrays = subArrays(movies);
 
   return (
       <Wrapper>
