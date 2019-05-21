@@ -11,6 +11,7 @@ const query = gql`
     search(searchTerm: $title) {
       movies{
         title
+        year
         poster
       }
     }
@@ -25,7 +26,15 @@ const ColumnWrapper = styled.div``;
 
 class PosterImage extends Component {
     renderPoster() {
+        console.log(this.props.data);
+
+        if (!this.props.data.search.movies) return ;
+
+        const movies = (this.props.data.search.movies.sort((a,b) => {
+          return parseInt(b.year.substring(0, 4) - a.year.substring(0, 4) )
+        }));
         const movie = (this.props.data.search.movies[0]);
+
         return (
             <PosterImageWrapper 
                 src={movie.poster}

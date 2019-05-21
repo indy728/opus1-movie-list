@@ -6,6 +6,9 @@ import Marquee from '../Marquee';
 import Posters from '../Posters';
 import SearchBar from '../SearchBar';
 
+import OutNowArray from '../../atoms/OutNowArray';
+import ComingSoonArray from '../../atoms/ComingSoonArray';
+
 const Wrapper = styled.section`
 
 `;
@@ -97,13 +100,15 @@ class Movies extends Component {
             transition: 'transform ease-out 1s'
         }
 
-        const moviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.outNowMovies;
+        const MoviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.comingSoonMovies;
+        // const MoviePosters = this.state.comingSoon ? ComingSoonArray : OutNowArray
 
         return (
             <Wrapper>
                 <FeatureFilms style={style} handlers={this.slideFunctions} movies={this.state.featuredMovies} />
                 <Marquee handler={this.toggleMarqueeHandler} comingSoon={this.state.comingSoon} />
-                <Posters movies={moviePosters} />
+                <Posters movies={MoviePosters} />
+                {/* <MoviePosters n={15}/> */}
                 <SearchBar />
             </Wrapper>
         )
