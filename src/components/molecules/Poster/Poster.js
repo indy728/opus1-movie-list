@@ -9,6 +9,8 @@ const Wrapper = styled.div`
     width: 40rem;
     border: solid 1px #eee;
     box-shadow: 0 0 10px -2px #999999;
+
+    margin-top: 3rem;
 `;
 
 const Poster = ({ data }) => {

@@ -10,6 +10,14 @@ const Wrapper = styled.h1`
     font-weight: 600;
     letter-spacing: .2rem;
     display: inline-block;
+
+    @media (max-width: 600px) {
+        font-size: ${props => props.fontsize / 2 || "3rem"};
+    }
+
+    @media (max-width: 450px) {
+        font-size: ${props => props.fontsize / 3 || "2rem"};
+    }
 `;
 
 const Heading = ({ ...props })  => {

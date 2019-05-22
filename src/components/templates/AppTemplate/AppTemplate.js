@@ -10,9 +10,10 @@ const Wrapper = styled.div`
   box-shadow: 0 0 10px -5px #999999;
   background-color: rgba(245, 245, 245, 0.466);
 
-  /* @media screen and (max-width: 640px) {
-    padding-top: 3.25rem;
-  } */
+  @media (max-width: 900px) {
+    padding: 0;
+    margin: 0;
+  }
 `
 
 const Content = styled.section``

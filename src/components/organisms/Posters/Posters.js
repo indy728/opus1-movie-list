@@ -1,41 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Row from '../Row';
+import Poster from '../../molecules/Poster';
 
 const Wrapper = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
   overflow: auto;
   height: 75rem;
   z-index: -1;
-`;
 
-const subArrays = (bigarray) => {
-  const size = 2;
-  const objToArray = [];
-  for (let i=0; i<bigarray.length; i+=1) {
-    objToArray.push(bigarray[i]);
-  }
-  const arrayOfArrays = [];
-  for (let i=0; i<objToArray.length; i+=size) {
-      arrayOfArrays.push(objToArray.slice(i,i+size));
-  }
-  return arrayOfArrays;
-}
+  margin-top: 0.5rem;
+`;
 
 const Posters = ({ data }) => {
 
-  const renderRows = (movieArray) =>{
+  const renderPosters = (flicks) =>{
 
     return (
-      movieArray.map((subArray, index) => <Row movies={subArray} key={index} />)
+      flicks.map((movie, index) => <Poster data={movie} />)
     )
   }
-  const movieArrays = subArrays(data.getPosters.results);
+
   return (
       <Wrapper>
-        {renderRows(movieArrays)}
+        {renderPosters(data.getPosters.results)}
       </Wrapper>
   )
 };

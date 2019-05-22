@@ -50,7 +50,7 @@ class Movies extends Component {
     toggleMarqueeHandler = () => {
         const comingSoon = this.state.comingSoon;
         this.setState({comingSoon: !comingSoon});
-    };
+    }
 
     goToPrevSlide = () => {
         if(this.state.featuredIndex === 0)

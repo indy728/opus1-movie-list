@@ -13,6 +13,10 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: space-between;
     color: ${palette('text', 0)};
+
+    /* @media (max-width: 900px) {
+        margin: 0 2rem;
+    } */
 `;
 
 const Header = () => {

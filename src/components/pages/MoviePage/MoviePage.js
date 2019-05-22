@@ -10,6 +10,12 @@ import Movies from '../../organisms/Movies';
 
 
 const GlobalStyle = createGlobalStyle`
+  * { 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+      box-sizing: border-box; 
+  }
+
   *,
   *::after,
   *::before {
