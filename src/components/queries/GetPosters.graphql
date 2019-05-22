@@ -1,9 +1,0 @@
-query GetPosters($title: String)
-{
-search(searchTerm: $title) {
-    movies{
-    title
-    year
-    poster
-    }
-}

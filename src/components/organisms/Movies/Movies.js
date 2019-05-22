@@ -8,9 +8,6 @@ import Marquee from '../Marquee';
 import Posters from '../Posters';
 import SearchBar from '../SearchBar';
 
-import OutNowArray from '../../atoms/OutNowArray';
-import ComingSoonArray from '../../atoms/ComingSoonArray';
-
 const Wrapper = styled.section`
 
 `;
@@ -42,31 +39,11 @@ class Movies extends Component {
             {title: "This Is Spinal Tap"},
         ]
 
-        const outNowMovies = [
-            {title: "Shazam!"},
-            {title: "They Shall Not Grow Old"},
-            {title: "Mr. Holland's Opus"},
-            {title: "The Sound of Music"},
-            {title: "Undefined"},
-            {title: "Ratatouille"},
-        ]
-
-        const comingSoonMovies = [
-            {title: "Solo"},
-            {title: "Detective Pikachu"},
-            {title: "The Room"},
-            {title: "Animatrix"},
-            {title: "March of the Penguins"},
-            {title: "Witches"},
-        ]
-
         this.state = {
             featuredMovies: featuredMovies,
             featuredIndex: 0,
             translateValue: 0,
-            comingSoon: false,
-            outNowMovies: outNowMovies,
-            comingSoonMovies: comingSoonMovies
+            comingSoon: false
         }
     }
 
@@ -115,7 +92,6 @@ class Movies extends Component {
             transition: 'transform ease-out 1s'
         }
 
-        // const MoviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.comingSoonMovies;
         const current = this.state.comingSoon ? "upcoming" : "now_playing";
 
         return (
@@ -131,8 +107,6 @@ class Movies extends Component {
                         )
                     }}
                 </Query>
-                {/* <Posters movies={MoviePosters} /> */}
-                {/* <MoviePosters n={15}/> */}
                 <SearchBar />
             </Wrapper>
         )
