@@ -28,23 +28,34 @@ const Wrapper = styled.div`
     box-shadow: 0 0 10px -2px #999999;
 `;
 
-const Poster = ( { title, ...props }) => {
+const Poster = ({ data }) => {
+    console.log(data);
+
     return (
         <Wrapper>
-            <Query query={query} variables={{ title }}>
-                {({ loading, error, data }) => {
-                    if (loading) return null;
-                    if (error) return `Error! ${error}`;
-                    // TODO: figure out contingency for title error
-                    if (!data.search) return 'No data';
-                    return (
-                        <PosterImage movies={data.search.movies} />
-                    );
-                }}
-            </Query>
-            <PosterDetails />
+          <PosterImage id={data.id} title={data.title} poster={data.poster} />
+          <PosterDetails />
         </Wrapper>
     )
 }
+
+// const Poster = ( { title, ...props }) => {
+//     return (
+//         <Wrapper>
+//             <Query query={query} variables={{ title }}>
+//                 {({ loading, error, data }) => {
+//                     if (loading) return null;
+//                     if (error) return `Error! ${error}`;
+//                     // TODO: figure out contingency for title error
+//                     if (!data.search) return 'No data';
+//                     return (
+//                         <PosterImage movies={data.search.movies} />
+//                     );
+//                 }}
+//             </Query>
+//             <PosterDetails />
+//         </Wrapper>
+//     )
+// }
 
 export default Poster;

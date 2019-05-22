@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import FeatureFilms from '../FeatureFilms';
 import Marquee from '../Marquee';
@@ -11,6 +13,19 @@ import ComingSoonArray from '../../atoms/ComingSoonArray';
 
 const Wrapper = styled.section`
 
+`;
+
+const query = gql`
+  query GetPosters($current: String)
+  {
+    getPosters(current: $current) {
+      results {
+        id
+        title
+        poster
+      }
+    }
+  }
 `;
 
 class Movies extends Component {
@@ -100,14 +115,23 @@ class Movies extends Component {
             transition: 'transform ease-out 1s'
         }
 
-        const MoviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.comingSoonMovies;
-        // const MoviePosters = this.state.comingSoon ? ComingSoonArray : OutNowArray
+        // const MoviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.comingSoonMovies;
+        const current = this.state.comingSoon ? "upcoming" : "now_playing";
 
         return (
             <Wrapper>
                 <FeatureFilms style={style} handlers={this.slideFunctions} movies={this.state.featuredMovies} />
                 <Marquee handler={this.toggleMarqueeHandler} comingSoon={this.state.comingSoon} />
-                <Posters movies={MoviePosters} />
+                <Query query={query} variables={{ current }}>
+                    { ({ loading, error, data }) => {
+                        if (loading) return null;
+                        if (error) return `Error! ${error}`;
+                        return (
+                            <Posters data={data} />
+                        )
+                    }}
+                </Query>
+                {/* <Posters movies={MoviePosters} /> */}
                 {/* <MoviePosters n={15}/> */}
                 <SearchBar />
             </Wrapper>

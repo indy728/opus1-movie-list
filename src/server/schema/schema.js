@@ -15,18 +15,11 @@ const MovieType = require("./movie_type");
 const OutNowType = require("./out_now_result");
 
 const omdbApiKey = process.env.OMDB_API_KEY;
+const tmdbApiKey = process.env.TMDB_API_KEY;
 
 const omdbUrl = `http://www.omdbapi.com/?apikey=${omdbApiKey}`;
-const moviegluUrl = `https://api-gate2.movieglu.com/`;
-
-const gluHeaders = {
-  "client": process.env.MG_USERNAME,
-  "x-api-key": process.env.MG_API_KEY,
-  "authorization": process.env.MG_AUTHORIZATION,
-  "api-version": "v200",
-  "territory": process.env.MG_TERRITORY,
-  "device-datetime": "2019-05-12T08:30:17.360Z"
-}
+const tmdbUrl = `https://api.themoviedb.org/3/movie/`
+const tmdbEndpoint = `/?api_key=${tmdbApiKey}&language=en-US&page=1&region=US`;
 
 function fetchSearch(searchTerm) {
   return fetch(`${omdbUrl}&s=${searchTerm}`).then(res => {
@@ -40,54 +33,36 @@ function fetchMovie(id) {
   });
 }
 
-function fetchOutNow(n) {
-  return fetch(`${moviegluUrl}filmsNowShowing/?n=${n}`, { method: 'GET', headers: gluHeaders}).then(res=> {
+function fetchPosters(current) {
+  return fetch(`${tmdbUrl}${current}${tmdbEndpoint}`).then(res=> {
     return res.json();
   })
 }
 
-function fetchComingSoon(n) {
-  return fetch(`${moviegluUrl}filmsComingSoon/?n=${n}`, { method: 'GET', headers: gluHeaders}).then(res=> {
-    return res.json();
-  })
-}
-
-const GluType = new GraphQLObjectType({
-  name: 'GluType',
+const TmdbType = new GraphQLObjectType({
+  name: 'TmdbType',
   fields: {
-    films: { 
+    results: {
       type: GraphQLList(new GraphQLObjectType({
-        name: "GluResult",
+        name: 'TmdbResult',
         fields: {
-          everything: {
-            type: GraphQLJSONObject,
-            resolve: (result) => result
+          id: {
+            type: GraphQLInt,
+            resolve: (res) => res.id
           },
           title: {
             type: GraphQLString,
-            resolve: (result) => result.film_name
-          },
-          releaseDate: {
-            type: GraphQLString,
-            resolve: (result) => result.release_dates[0].release_date
+            resolve: (res) => res.title
           },
           poster: {
-            type: GraphQLJSONObject,
-            resolve: (res) => res.images
-          }
+            type: GraphQLString,
+            resolve: (res) => res.poster_path
+          },
         }
-      })),
-      resolve: (result) => result.films
-    },
-    imdbID: { 
-      type: GraphQLString,
-    },
-    releaseDate: { 
-      type: GraphQLString,
+      }))
     }
   }
 })
-
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQuery",
@@ -108,21 +83,14 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: (root, args) => fetchMovie(args.id),
     },
-    gluOutNow: {
-      type: GluType,
+    getPosters: {
+      type: TmdbType,
       args: {
-        n: { type: GraphQLInt }
+        current: { type: GraphQLString },
       },
-      resolve: (root, args) => fetchOutNow(args.n)
-    },
-    gluComingSoon: {
-      type: GluType,
-      args: {
-        n: { type: GraphQLInt }
-      },
-      resolve: (root, args) => fetchComingSoon(args.n)
-    },
-  },
+      resolve: (root, args) => fetchPosters(args.current)
+    }
+  }
 });
 
 const omdbSchema = new GraphQLSchema({
