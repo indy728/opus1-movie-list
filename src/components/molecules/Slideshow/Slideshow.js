@@ -1,8 +1,22 @@
 import React from 'react';
 import styled from 'styled-components'
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import Arrow from '../../atoms/Arrow'
 import FeatureImage from '../../atoms/FeatureImage'
+
+const query = gql`
+  query GetPosters($title: String)
+  {
+    search(searchTerm: $title) {
+      movies{
+        title
+        poster
+      }
+    }
+  }
+`;
 
 const Wrapper = styled.div`
     width: 100%;
@@ -15,7 +29,15 @@ const Slideshow = (props) => {
 
     const posterList = props.movies.map((movie, index) => {
         return (
-            <FeatureImage style={props.style} title={movie.title} key={movie + index} />
+            <Query query={query} variables={{title: movie.title}} key={movie + index}>
+                { ({ loading, error, data }) => {
+                        if (loading) return null;
+                        if (error) return `Error! ${error}`;
+                        return (
+                            <FeatureImage style={props.style} movie={data.search.movies[0]} />
+                        )
+                    }}
+            </Query>
         )
     })
 

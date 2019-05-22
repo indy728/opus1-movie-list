@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components'
 import Slideshow from '../../molecules/Slideshow/Slideshow';
 
-
 const Wrapper = styled.section`
     display: flex;
     justify-Content: center;
@@ -10,13 +9,12 @@ const Wrapper = styled.section`
 `;
 
 const FeatureFilms = (props) => {
-
   return (
     <Wrapper>
       <Slideshow style={props.style} handlers={props.handlers} movies={props.movies}/>
     </Wrapper>
   )
-
 }
   
-  export default FeatureFilms
+  export default FeatureFilms;
+  
