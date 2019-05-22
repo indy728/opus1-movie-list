@@ -14,11 +14,9 @@ const Wrapper = styled.div`
 `;
 
 const Row = (props) => {
-
     const posterList = props.movies.map((movie, index) => {
-        console.log(movie);
         return (
-            <Poster title={movie} key={movie + index} />
+            <Poster data={movie} key={movie + index} />
         )
     })
 

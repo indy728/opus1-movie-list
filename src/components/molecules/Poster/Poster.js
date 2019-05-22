@@ -11,11 +11,11 @@ const Wrapper = styled.div`
     box-shadow: 0 0 10px -2px #999999;
 `;
 
-const Poster = (props) => {
+const Poster = ({ data }) => {
     return (
         <Wrapper>
-            <PosterImage title={props.title} />
-            <PosterDetails />
+          <PosterImage id={data.id} title={data.title} poster={data.poster} />
+          <PosterDetails />
         </Wrapper>
     )
 }

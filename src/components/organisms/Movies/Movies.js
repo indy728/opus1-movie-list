@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import FeatureFilms from '../FeatureFilms';
 import Marquee from '../Marquee';
 import Posters from '../Posters';
 import SearchBar from '../SearchBar';
 
-import OutNowArray from '../../atoms/OutNowArray';
-import ComingSoonArray from '../../atoms/ComingSoonArray';
-
 const Wrapper = styled.section`
 
+`;
+
+const query = gql`
+  query GetPosters($current: String)
+  {
+    getPosters(current: $current) {
+      results {
+        id
+        title
+        poster
+      }
+    }
+  }
 `;
 
 class Movies extends Component {
@@ -27,31 +39,11 @@ class Movies extends Component {
             {title: "This Is Spinal Tap"},
         ]
 
-        const outNowMovies = [
-            {title: "Shazam!"},
-            {title: "They Shall Not Grow Old"},
-            {title: "Mr. Holland's Opus"},
-            {title: "The Sound of Music"},
-            {title: "Undefined"},
-            {title: "Ratatouille"},
-        ]
-
-        const comingSoonMovies = [
-            {title: "Solo"},
-            {title: "Detective Pikachu"},
-            {title: "The Room"},
-            {title: "Animatrix"},
-            {title: "March of the Penguins"},
-            {title: "Witches"},
-        ]
-
         this.state = {
             featuredMovies: featuredMovies,
             featuredIndex: 0,
             translateValue: 0,
-            comingSoon: false,
-            outNowMovies: outNowMovies,
-            comingSoonMovies: comingSoonMovies
+            comingSoon: false
         }
     }
 
@@ -100,15 +92,21 @@ class Movies extends Component {
             transition: 'transform ease-out 1s'
         }
 
-        const MoviePosters = this.state.comingSoon ? this.state.comingSoonMovies : this.state.comingSoonMovies;
-        // const MoviePosters = this.state.comingSoon ? ComingSoonArray : OutNowArray
+        const current = this.state.comingSoon ? "upcoming" : "now_playing";
 
         return (
             <Wrapper>
                 <FeatureFilms style={style} handlers={this.slideFunctions} movies={this.state.featuredMovies} />
                 <Marquee handler={this.toggleMarqueeHandler} comingSoon={this.state.comingSoon} />
-                <Posters movies={MoviePosters} />
-                {/* <MoviePosters n={15}/> */}
+                <Query query={query} variables={{ current }}>
+                    { ({ loading, error, data }) => {
+                        if (loading) return null;
+                        if (error) return `Error! ${error}`;
+                        return (
+                            <Posters data={data} />
+                        )
+                    }}
+                </Query>
                 <SearchBar />
             </Wrapper>
         )
